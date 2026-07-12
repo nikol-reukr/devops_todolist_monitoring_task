@@ -1,10 +1,17 @@
-from prometheus_client import Counter
+import time
+from prometheus_client import Counter, Gauge
 
 http_requests_total = Counter(
     "http_requests_total",
     "Total HTTP requests",
     ["method"]
 )
+
+http_requests_created = Gauge(
+    "http_requests_created",
+    "Time when the HTTP request counters were created or reset"
+)
+http_requests_created.set(time.time())
 
 EXCLUDED_PATHS = ("/metrics", "/api/health", "/api/ready")
 
