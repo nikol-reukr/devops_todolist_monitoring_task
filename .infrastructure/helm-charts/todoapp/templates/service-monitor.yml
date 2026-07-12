@@ -9,7 +9,7 @@ metadata:
         {{ $key }}: {{ $value | quote }}
         {{- end }}
 spec:
-    jobLabel: job
+    jobLabel: {{ .Values.serviceMonitor.jobLabel }}
     endpoints:
         - interval: {{.Values.serviceMonitor.interval}}
           port: {{.Values.serviceMonitor.port}}
